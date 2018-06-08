@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "unordered_map": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "valarray": "cpp"
+    }
+}
