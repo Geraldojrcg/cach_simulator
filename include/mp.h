@@ -1,10 +1,3 @@
-/**
-* @file     mp.h
-* @brief        	Arquivo cabecalho com a definicao de atributos e metodos da classe memória principal
-* @author   	MrBlack (daniel99955@hotmail.com)
-* @since    	12/06/2017
-* @date     	14/06/2017
-*/
 #ifndef MP_H
 #define MP_H
 

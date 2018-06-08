@@ -1,12 +1,3 @@
-/**
-* @file     cache.cpp
-* @brief        	Arquivo de corpo com a implementacao dos metodos da classe cache
-* @author   	MrBlack (daniel99955@hotmail.com)
-* @since    	12/06/2017
-* @date     	14/06/2017
-* @sa 		cache.h
-*/
-
 #include "cache.h"
 
 /** @brief 	Construtor Padrão */

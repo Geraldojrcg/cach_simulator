@@ -1,14 +1,3 @@
-/**
-* @file     funcoes.h
-* @brief 	Arquivo cabecalho com as definicoes das funcoes de manipulacao do programa
-* @author 	MrBlack (daniel99955@hotmail.com)
-* @since 	12/06/2017
-* @date 	18/06/2017
-* @sa 		cache.h
-* @sa 		mp.h
-* @sa 		mapeamento.h
-*/
-
 #ifndef FUNCOES_H
 #define FUNCOES_H
 

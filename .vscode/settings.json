@@ -3,6 +3,8 @@
         "unordered_map": "cpp",
         "array": "cpp",
         "initializer_list": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "ostream": "cpp",
+        "string_view": "cpp"
     }
 }

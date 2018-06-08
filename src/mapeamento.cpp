@@ -1,12 +1,3 @@
-/**
-* @file         mapeamento.cpp
-* @brief    	Arquivo cabecalho com as definicoes das funcoes de mapeamento
-* @author   	MrBlack (daniel99955@hotmail.com)
-* @since    	14/06/2017
-* @date     	19/06/2017
-* @sa 			mapeamento.h
-*/
-
 #include "mapeamento.h"
 
 /**

@@ -1,12 +1,3 @@
-/**
-* @file     funcoes.cpp
-* @brief    	Arquivo de corpo com a implementacao das funcoes de manipulacao do programa
-* @author   	MrBlack (daniel99955@hotmail.com)
-* @since    	12/06/2017
-* @date     	19/06/2017
-* @sa 		funcoes.h
-*/
-
 #include "funcoes.h"
 
 /**

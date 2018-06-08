@@ -1,11 +1,3 @@
-/**
-* @file     cache.h
-* @brief    	Arquivo cabecalho com a definicao de atributos e metodos da classe cache
-* @author	MrBlack (daniel99955@hotmail.com)
-* @since 	12/06/2017
-* @date 	14/06/2017
-* @sa 		mp.h
-*/
 #ifndef CACHE_H
 #define CACHE_H
 

@@ -1,11 +1,3 @@
-/**
-* @file     mp.cpp
-* @brief         	Arquivo de corpo com as implementacoes dos metodos da classe mp
-* @author      	MrBlack (daniel99955@hotmail.com)
-* @since        	12/06/2017
-* @date         	14/06/2017
-* @sa 		mp.h
-*/
 #include "mp.h"
 
 /** @brief 	Construtor Padrão */

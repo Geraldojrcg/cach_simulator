@@ -1,13 +1,3 @@
-/**
-* @file     subs.h
-* @brief	Arquivo cabecalho com a definicao das funcoes de politica de substituicao
-* @author 	MrBlack (daniel99955@hotmail.com)
-* @since 	14/06/2017
-* @date 	19/06/2017
-* @sa 		mp.h
-* @sa 		cache.h
-*/
-
 #ifndef SUBS_H
 #define SUBS_H
 
