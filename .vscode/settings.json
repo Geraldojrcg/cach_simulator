@@ -5,6 +5,11 @@
         "initializer_list": "cpp",
         "valarray": "cpp",
         "ostream": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "iostream": "cpp",
+        "vector": "cpp",
+        "deque": "cpp"
     }
 }

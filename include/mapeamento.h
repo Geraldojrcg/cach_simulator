@@ -17,46 +17,15 @@ using std::pair;
 #include <ctime>
 #include <cstdlib>
 
-#include "mp.h"
+#include "mem.h"
 #include "cache.h"
 #include "subs.h"
 
-/**
-* @brief 	Funcao que realiza o aplica o mapeamento direto
-* @param 	c, objeto do tipo Cache
-* @param 	m, objeto do tipo Mp
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @param 	line, linhas da memoria cache
-* @return 	Sem retorno
-*/
-void directed_mapped(Cache *c, Mp *m, int block_cache, int line) ;
 
-/**
-* @brief    Funcao que realiza o aplica o mapeamento totalmente associativo
-* @param 	c, objeto do tipo Cache
-* @param 	m, objeto do tipo Mp
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @param 	line, linhas da memoria cache
-* @param 	sub, tipo de politica de substituicao
-* @param 	fifo, fila para substituicao do tipo fifo
-* @param 	lfu, map para substituicao do tipo lfu e lru
-* @param 	ciclo, contagem dos ciclos para lru
-* @return 	Sem retorno
-*/
-void fullyAssociative_mapped(Cache *c, Mp *m, int block_cache, int line, int sub, queue<int> &fifo, map<int, int> &lfu, int &ciclo);
+void map_direto(Cache *c, Mem *m, int block_cache, int line) ;
 
-/**
-* @brief    Funcao que realiza o aplica o mapeamento totalmente associativo
-* @param 	c, objeto do tipo Cache
-* @param 	m, objeto do tipo Mp
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @param 	line, linhas da memoria cache
-* @param 	sub, tipo de politica de substituicao
-* @param 	setSize, numero de vias
-* @param 	v, matriz para substituicao do tipo lfu e lru e FIFO
-* @param 	ciclo, contagem dos ciclos para lru
-* @return 	Sem retorno
-*/
-void parsedAssociative_mapped(Cache *c, Mp *m, int block_cache, int line, int sub, int setSize,  int **v, int &cont) ;
+void map_full_associativo(Cache *c, Mem *m, int block_cache, int line, int sub, queue<int> &fifo, map<int, int> &lfu, int &ciclo);
+
+void map_parcial_associativo(Cache *c, Mem *m, int block_cache, int line, int sub, int setSize,  int **v, int &cont) ;
 
 #endif

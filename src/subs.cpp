@@ -1,14 +1,6 @@
 #include "subs.h"
 
-/**
-* @brief	Funcao que realiza a substituicao aleatoria no Totalmente Associativo
-* @param 	c, ponteiro para objeto do tipo Cache
-* @param 	m, ponteiro para objeto do tipo Mp
-* @param 	line, quantidade de linhas da memoria cache
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @return 	Sem retorno
-*/
-void randomT(Cache *c, Mp *m, int line, int block_cache) {
+void randomT(Cache *c, Mem *m, int line, int block_cache) {
 	bool hit = false, emp = false;
 	int prox;
 
@@ -48,16 +40,7 @@ void randomT(Cache *c, Mp *m, int line, int block_cache) {
 	}
 }
 
-/**
-* @brief	Funcao que realiza a substituicao FIFO no Totalmente Associativo
-* @param 	c, ponteiro para objeto do tipo Cache
-* @param 	m, ponteiro para objeto do tipo Mp
-* @param 	line, quantidade de linhas da memoria cache
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @param 	fifo, fila para realizar controle com FIFO
-* @return 	Sem retorno
-*/
-void FIFOT(Cache *c, Mp *m, int line, int block_cache, queue<int> &fifo) {
+void FIFOT(Cache *c, Mem *m, int line, int block_cache, queue<int> &fifo) {
 	bool hit = false, emp = false;
 	int prox;
 
@@ -104,16 +87,7 @@ void FIFOT(Cache *c, Mp *m, int line, int block_cache, queue<int> &fifo) {
 	}
 }
 
-/**
-* @brief	Funcao que realiza a substituicao LFU no Totalmente Associativo
-* @param 	c, ponteiro para objeto do tipo Cache
-* @param 	m, ponteiro para objeto do tipo Mp
-* @param 	line, quantidade de linhas da memoria cache
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @param 	lfu, map para controlar quantidade de uso de um bloco
-* @return 	Sem retorno
-*/
-void LFUT(Cache *c, Mp *m, int line, int block_cache, map<int, int> &lfu) {
+void LFUT(Cache *c, Mem *m, int line, int block_cache, map<int, int> &lfu) {
 	bool hit = false, emp = false;
 	int prox;
 
@@ -174,17 +148,7 @@ void LFUT(Cache *c, Mp *m, int line, int block_cache, map<int, int> &lfu) {
 		}
 }
 
-/**
-* @brief	Funcao que realiza a substituicao LRU no Totalmente Associativo
-* @param 	c, ponteiro para objeto do tipo Cache
-* @param 	m, ponteiro para objeto do tipo Mp
-* @param 	line, quantidade de linhas da memoria cache
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @param 	lru, map para controlar quantidade de uso de um bloco
-* @param 	ciclo, quantidade de ciclos executados
-* @return 	Sem retorno
-*/
-void LRUT(Cache *c, Mp *m, int line, int block_cache, map<int, int> &lru, int &ciclo) {
+void LRUT(Cache *c, Mem *m, int line, int block_cache, map<int, int> &lru, int &ciclo) {
 	bool hit = false, emp = false;
 	int prox;
 
@@ -241,16 +205,7 @@ void LRUT(Cache *c, Mp *m, int line, int block_cache, map<int, int> &lru, int &c
 	}
 }
 
-/**
-* @brief	Funcao que realiza a substituicao aleatoria no Parcialmente Associativo
-* @param 	c, ponteiro para objeto do tipo Cache
-* @param 	m, ponteiro para objeto do tipo Mp
-* @param 	line, quantidade de linhas da memoria cache
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @param 	setSize, quantidade de vias
-* @return 	Sem retorno
-*/
-void randomP(Cache *c, Mp *m, int line, int block_cache, int setSize) {
+void randomMem(Cache *c, Mem *m, int line, int block_cache, int setSize) {
 	bool hit = false, emp = false;
 	int prox;
 
@@ -311,18 +266,7 @@ void randomP(Cache *c, Mp *m, int line, int block_cache, int setSize) {
 	}
 }
 
-/**
-* @brief	Funcao que realiza a substituicao FIFO no Totalmente Associativo
-* @param 	c, ponteiro para objeto do tipo Cache
-* @param 	m, ponteiro para objeto do tipo Mp
-* @param 	line, quantidade de linhas da memoria cache
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @param 	setSize, quantidade de vias
-* @param 	fifo, map para realizar controle com FIFO
-* @param 	cont, controle de entradas
-* @return 	Sem retorno
-*/
-void FIFOP(Cache *c, Mp *m, int line, int block_cache, int setSize, int **v, int &cont) {
+void FIFOP(Cache *c, Mem *m, int line, int block_cache, int setSize, int **v, int &cont) {
 	bool hit = false, emp = false;
 	int prox;
 
@@ -400,21 +344,11 @@ void FIFOP(Cache *c, Mp *m, int line, int block_cache, int setSize, int **v, int
 			}
 		}
 	} else {
-		cout << "HIT" << endl;
+		cout << "HIT => Linha "<<block_cache << endl;
 	}
 }
 
-/**
-* @brief	Funcao que realiza a substituicao LFU no Parcialmente Associativo
-* @param 	c, ponteiro para objeto do tipo Cache
-* @param 	m, ponteiro para objeto do tipo Mp
-* @param 	line, quantidade de linhas da memoria cache
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @param 	setSize, quantidade de vias
-* @param 	ma, map para controlar quantidade de uso de um bloco
-* @return 	Sem retorno
-*/
-void LFUP(Cache *c, Mp *m, int line, int block_cache, int setSize, int **v) {
+void LFUP(Cache *c, Mem *m, int line, int block_cache, int setSize, int **v) {
 	bool hit = false, emp = false;
 	int prox;
 
@@ -497,18 +431,7 @@ void LFUP(Cache *c, Mp *m, int line, int block_cache, int setSize, int **v) {
 	}
 }
 
-/**
-* @brief	Funcao que realiza a substituicao LRU no Totalmente Associativo
-* @param 	c, ponteiro para objeto do tipo Cache
-* @param 	m, ponteiro para objeto do tipo Mp
-* @param 	line, quantidade de linhas da memoria cache
-* @param 	block_cache, bloco da memoria principal para substituir na cache
-* @param 	setSize, quantidade de vias
-* @param 	ma, map para controlar quantidade de uso de um bloco
-* @param 	cont, quantidade de ciclos executados
-* @return 	Sem retorno
-*/
-void LRUP(Cache *c, Mp *m, int line, int block_cache, int setSize, int **v, int &cont) {
+void LRUP(Cache *c, Mem *m, int line, int block_cache, int setSize, int **v, int &cont) {
 	bool hit = false, emp = false;
 	int prox;
 
