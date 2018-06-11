@@ -77,10 +77,7 @@ void print(Cache *ca, Mem *mem, int sizeBlock, int block, int line) {
 			cout << endl;
 		}
 	}
-
-	cout << "\n\n\n";
-
-	cout << "Memória Principal" << endl;
+	cout << "\nMemória Principal" << endl;
 	cout << "Bloco - Endereco - Conteudo" << endl;
 	for(int i = 0; i < block; i++) {
 		for(int j = 0; j < sizeBlock; j++) {
@@ -100,7 +97,7 @@ void inicia_mem(Mem *mem, int sizeBlock, int block){
 		int j = 0;
 		while(j < sizeBlock){
 			mem[i].insertEnd(aux++);
-			mem[i].insertCont(aux*5);
+			mem[i].insertCont(rand() % 999);
 			j++;
 		}
 	}
@@ -136,8 +133,8 @@ void print_config(int &s, int &l, int &b, int &m, int &sub){
 }
 int main() {
 	
-	int sizeBlock, line, block, map, setSize, sub, write, endereco, ciclo = 0;
-	string comando = "", elemento, linha;
+	int sizeBlock, line, block, map, setSize, sub, write, endereco, ciclo = 0, val;
+	string comando = "", elemento, linha, valor;
 	queue<int> fifo;
 	std::map<int, int> lfu;
 
@@ -168,14 +165,15 @@ int main() {
 		cerr << "Erro na leitura do arquivo de comandos." << endl;
 		return 0;
 	}
-	cout << "Lendo arquivo de comandos !!!\n\n";
+	cout << "Lendo arquivo de comandos !!!\n";
+	cout << "----------------------------------"<<endl;
 	
 	while(!comandos.eof()){
 		// Leitura dos comandos
 		getline(comandos, linha);
 		stringstream ss(linha);
 
-		ss >> comando >> elemento;
+		ss >> comando >> elemento >> valor;
 
 		minusculas(comando);
 
@@ -187,18 +185,29 @@ int main() {
 				int block_cache = endereco / sizeBlock;
 				if(map == 1) { //Mapeamento direto
 					map_direto(cache, mem, block_cache, line);
-
+				} else if(map == 2) { // Totalmente associativo
+					map_full_associativo(cache, mem, block_cache, line, sub, fifo, lfu, ciclo);
+				} else if(map == 3) { // Parcialmente associativo
+					map_parcial_associativo(cache, mem, block_cache, line, sub, setSize, v, ciclo);
+				}
+			}
+		}else if(comando == "show") {
+			print(cache, mem, sizeBlock, block, line);
+		}else{
+			endereco = stoi(elemento);
+			val = stoi(valor);
+			if(endereco >= 0 && endereco <= ((sizeBlock * block) - 1) ){
+				int block_cache = endereco / sizeBlock;
+				if(map == 1) { //Mapeamento direto
+					map_direto(cache, mem, block_cache, line);
 				} else if(map == 2) { // Totalmente associativo
 					map_full_associativo(cache, mem, block_cache, line, sub, fifo, lfu, ciclo);
 
 				} else if(map == 3) { // Parcialmente associativo
 					map_parcial_associativo(cache, mem, block_cache, line, sub, setSize, v, ciclo);
-
 				}
 			}
-		} else if(comando == "show") {
-			print(cache, mem, sizeBlock, block, line);
-		}
+		} 
 	}
 
 	for(int i = 0; i < 2; i++)

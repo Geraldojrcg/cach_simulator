@@ -7,6 +7,7 @@ void randomT(Cache *c, Mem *m, int line, int block_cache) {
 	for(int i = 0; i < line ; i++) {
 		if(c[i].getBloco() == block_cache) {
 			hit = true;
+			cout << "HIT => Linha "<< c[i].getLinha() << endl;
 		}
 	}
 
@@ -35,8 +36,6 @@ void randomT(Cache *c, Mem *m, int line, int block_cache) {
 			cout << "MISS => bloco alocado na linha " << r << endl;
 		}
 
-	} else {
-		cout << "HIT" << endl;
 	}
 }
 
@@ -47,6 +46,7 @@ void FIFOT(Cache *c, Mem *m, int line, int block_cache, queue<int> &fifo) {
 	for(int i = 0; i < line ; i++) {
 		if(c[i].getBloco() == block_cache) {
 			hit = true;
+			cout << "HIT => Linha "<< c[i].getLinha() << endl;
 		}
 	}
 
@@ -81,9 +81,6 @@ void FIFOT(Cache *c, Mem *m, int line, int block_cache, queue<int> &fifo) {
 				}
 			}
 		}
-
-	} else {
-		cout << "HIT" << endl;
 	}
 }
 
@@ -95,7 +92,7 @@ void LFUT(Cache *c, Mem *m, int line, int block_cache, map<int, int> &lfu) {
 			if(c[i].getBloco() == block_cache) {
 				hit = true;
 				lfu[block_cache] += 1;
-
+				cout << "HIT => Linha "<< c[i].getLinha() << endl;
 			}
 		}
 
@@ -143,8 +140,6 @@ void LFUT(Cache *c, Mem *m, int line, int block_cache, map<int, int> &lfu) {
 				}
 			}
 
-		} else {
-			cout << "HIT" << endl;
 		}
 }
 
@@ -156,6 +151,7 @@ void LRUT(Cache *c, Mem *m, int line, int block_cache, map<int, int> &lru, int &
 		if(c[i].getBloco() == block_cache) {
 			hit = true;
 			lru[block_cache] = ciclo++;
+			cout << "HIT => Linha "<< c[i].getLinha() << endl;
 		}
 	}
 
@@ -200,8 +196,6 @@ void LRUT(Cache *c, Mem *m, int line, int block_cache, map<int, int> &lru, int &
 				}
 			}
 		}
-	} else {
-		cout << "HIT" << endl;
 	}
 }
 
@@ -220,6 +214,7 @@ void randomMem(Cache *c, Mem *m, int line, int block_cache, int setSize) {
 			for(int j = i; j < divisoes + i; j++) {
 				if(c[j + i ].getBloco() == block_cache) {
 					hit = true;
+					cout << "HIT => Linha "<< c[i].getLinha() << endl;
 				}
 			}
 		}
@@ -261,8 +256,6 @@ void randomMem(Cache *c, Mem *m, int line, int block_cache, int setSize) {
 			cout << "MISS => bloco alocado na linha " << r << endl;
 		}
 
-	} else {
-		cout << "HIT" << endl;
 	}
 }
 
@@ -364,6 +357,7 @@ void LFUP(Cache *c, Mem *m, int line, int block_cache, int setSize, int **v) {
 				if(c[j + i ].getBloco() == block_cache) {
 					hit = true;
 					v[j + i][1] += 1;
+					cout << "HIT => Linha "<< c[j+i].getLinha() << endl;
 				}
 			}
 		}
@@ -426,8 +420,6 @@ void LFUP(Cache *c, Mem *m, int line, int block_cache, int setSize, int **v) {
 				}
 			}
 		}
-	} else {
-		cout << "HIT" << endl;
 	}
 }
 
@@ -447,11 +439,12 @@ void LRUP(Cache *c, Mem *m, int line, int block_cache, int setSize, int **v, int
 				if(c[j + i ].getBloco() == block_cache) {
 					hit = true;
 					v[j + i][1] = cont++;
+					cout << "HIT => Linha "<< c[j+i].getLinha() << endl;
 				}
 			}
 		}
 	}
-
+	
 	if(!hit){
 		for(int i = 0; i < setSize ; i++) {
 			if(i == way) {
@@ -489,9 +482,7 @@ void LRUP(Cache *c, Mem *m, int line, int block_cache, int setSize, int **v, int
 					}
 				}
 			}
-
 			int r = b;
-
 			for(int i = 0; i < setSize; i++){
 				if(i == way) {
 					for(int j = (i + way); j < setSize + (i + way); j++) {
@@ -509,7 +500,5 @@ void LRUP(Cache *c, Mem *m, int line, int block_cache, int setSize, int **v, int
 				}
 			}
 		}
-	} else {
-		cout << "HIT" << endl;
 	}
 }

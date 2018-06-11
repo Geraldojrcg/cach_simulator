@@ -4,7 +4,7 @@ void map_direto(Cache *c, Mem *m, int block_cache, int line) {
 	int line_cache = block_cache % line;
 
 	if(c[line_cache].getBloco() == block_cache)
-		cout << "HIT => Linha "<< line_cache << endl;
+		cout << "HIT => Linha "<< c[line_cache].getLinha() << endl;
 	else {
 		c[line_cache].setBloco(m[block_cache].getBloco());
 		c[line_cache].setEndereco(m[block_cache].getEndereco());
